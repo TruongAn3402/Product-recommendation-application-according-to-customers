@@ -6,7 +6,7 @@ Recommend products according to customers project is an application developed in
 - Library: [jar_file](https://drive.google.com/file/d/1GKZAODYk4pAskrGJdzEOvh8wFNtRthou/view?usp=sharing)
 - Project link [Product recommendation application for customers](https://drive.google.com/file/d/1LeQ4JIERtlNSXc1pVV_mhXgOnT1fxeAd/view?usp=sharing)
 ### Usage
-Updating
+Read `Hướng dẫn sử dụng.docx` to get started.
 ## Technologies Used
 Java, Neo4J, ...
 ## Acknowledgments
