@@ -1,0 +1,121 @@
+match(n) return n;
+
+===========Tạo Brand===========
+
+create(b:brand{name:'apple'}) return b;
+create(b:brand{name:'samsung'}) return b;
+create(b:brand{name:'xiaomi'}) return b;
+
+===========Tạo Product===========
+
+----------Thêm----------
+
+create(p:product{name:'iPhone15',gia:'31000000',ram:'512GB'}) return p;
+create(p:product{name:'iPhone14',gia:'22000000',ram:'512GB'}) return p;
+create(p:product{name:'iPhone13',gia:'19000000',ram:'256GB'}) return p;
+
+create(p:product{name:'Samsung Galaxy Z Fold4',gia:'21000000',ram:'256GB'}) return p;
+create(p:product{name:'Samsung Galaxy Z Flip5',gia:'17000000',ram:'256GB'}) return p;
+create(p:product{name:'Samsung Galaxy A24',gia:'7000000',ram:'8GB'}) return p;
+create(p:product{name:'Samsung Galaxy S23',gia:'15000000',ram:'128GB'}) return p;
+
+create(p:product{name:'Xiaomi Redmi Note 12 Pro',gia:'7000000',ram:'256GB'}) return p;
+create(p:product{name:'Xiaomi 13T',gia:'12000000',ram:'12GB'}) return p;
+
+create(p:product{name:'test'}) return p;		(test thôi nha)
+
+----------Xóa----------
+
+MATCH (p:product {name: 'test'}) DETACH DELETE p	(test thôi nha)
+
+----------Sửa----------
+
+MATCH (p:product {name: 'test'})			(test thôi nha)
+SET p.name = 'demo'
+RETURN p.name;	
+
+===========Tạo Relationship===========
+
+MATCH(b:brand),(p:product)
+WHERE b.name='apple' and p.name='iPhone15'
+CREATE (p)-[:thuoc]->(b)
+RETURN p,b
+
+-----------------------
+
+MATCH(b:brand),(p:product)
+WHERE b.name='apple' and p.name='iPhone14'
+CREATE (p)-[:thuoc]->(b)
+RETURN p,b
+
+-----------------------
+
+MATCH(b:brand),(p:product)
+WHERE b.name='apple' and p.name='iPhone13'
+CREATE (p)-[:thuoc]->(b)
+RETURN p,b
+
+-----------------------
+
+MATCH(b:brand),(p:product)
+WHERE b.name='samsung' and p.name='Samsung Galaxy Z Fold4'
+CREATE (p)-[:thuoc]->(b)
+RETURN p,b
+
+-----------------------
+
+MATCH(b:brand),(p:product)
+WHERE b.name='samsung' and p.name='Samsung Galaxy Z Flip5'
+CREATE (p)-[:thuoc]->(b)
+RETURN p,b
+
+-----------------------
+
+MATCH(b:brand),(p:product)
+WHERE b.name='samsung' and p.name='Samsung Galaxy A24'
+CREATE (p)-[:thuoc]->(b)
+RETURN p,b
+
+-----------------------
+
+MATCH(b:brand),(p:product)
+WHERE b.name='samsung' and p.name='Samsung Galaxy S23'
+CREATE (p)-[:thuoc]->(b)
+RETURN p,b
+
+-----------------------
+
+MATCH(b:brand),(p:product)
+WHERE b.name='xiaomi' and p.name='Xiaomi Redmi Note 12 Pro'
+CREATE (p)-[:thuoc]->(b)
+RETURN p,b
+
+-----------------------
+
+MATCH(b:brand),(p:product)
+WHERE b.name='xiaomi' and p.name='Xiaomi 13T'
+CREATE (p)-[:thuoc]->(b)
+RETURN p,b
+
+===========Truy vấn===========
+
+1.Đề xuất sản phẩm hãng Apple với giá trên 20 triệu.
+
+MATCH (b:brand{name:'apple'})<-[:thuoc]-(p:product)
+WHERE toInteger(p.gia) > 20000000
+RETURN p
+
+-----------------------
+
+2.Đề xuất tất cả sản phẩm với giá trong khoảng 10 - 20 triệu.
+
+MATCH (p:product)
+WHERE p.gia < 10000000 OR p.gia > 20000000
+RETURN p
+
+-----------------------
+
+3. Đề xuất tất cả sản phẩm hãng Samsung
+
+MATCH (b:brand{name:'samsung'})<-[:thuoc]-(p:product)
+RETURN p
