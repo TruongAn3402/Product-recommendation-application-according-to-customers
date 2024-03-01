@@ -1,5 +1,5 @@
 # Product recommendation application for customers
-The customer-based product manufacturing project is an application developed in the Java programming language and uses a NoSQL database. This application aims to analyze customer information and purchasing behavior to produce the most suitable products.
+Recommend products according to customers project is an application developed in the Java programming language and uses a NoSQL database. This application aims to analyze customer information and purchasing behavior to produce the most suitable products.
 ## Getting Started
 ### Installation
 - Application: Neo4J, Netbeans
